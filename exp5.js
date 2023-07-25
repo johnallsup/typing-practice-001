@@ -105,7 +105,7 @@ class ErrorPolicyButton {
   }
   update() {
     this.button.style.backgroundColor = this.restart ? "#a00" : "#070"
-    this.button.innerText = this.restart ? "Restart" : "Continue"
+    this.button.innerText = this.restart ? "ErrorRestart" : "ErrorContinue"
   }
 }
 
@@ -347,6 +347,8 @@ class TextArea {
       this.parent.signalCorrect()
       this.advanceChar()
     } else {
+      this.parent.actualCharDiv.textContent = key
+      this.parent.expectedCharDiv.textContent = expected
       this.parent.signalError()
       this.error()
     }
@@ -541,7 +543,36 @@ class TypingPractice {
     this.mainAreaCapsOnColour = "yellow"
     this.mainAreaNormalColour = this.mainAreaCapsOffColour
     this.mainAreaErrorColour = "red"
+
+    this.errorDialog = document.createElement("dialog")
+    this.errorDialog.classList.add("error-dialog")
+    let div, div2
+    
+    div2 = document.createElement("div")
+    div = document.createElement("div")
+    div.classList.add("label")
+    div.textContent = "Expected"
+    div2.append(div)
+    this.expectedCharDiv = document.createElement("div")
+    this.expectedCharDiv.classList.add("expected-key")
+    this.expectedCharDiv.innerHTML = "&nbsp;"
+    div2.append(this.expectedCharDiv)
+    this.errorDialog.append(div2)
+
+    div2 = document.createElement("div")
+    div = document.createElement("div")
+    div.classList.add("label")
+    div.textContent = "Actual"
+    div2.append(div)
+    this.actualCharDiv = document.createElement("div")
+    this.actualCharDiv.classList.add("actual-key")
+    this.actualCharDiv.innerHTML = "&nbsp;"
+    div2.append(this.actualCharDiv)
+    this.errorDialog.append(div2)
+    document.body.append(this.errorDialog)
+    window.errd = this.errorDialog
   }
+  errorDialogTime = 500
   flashTimeout = 100
   keyPressesTotal = 0
   keyPressesCorrect = 0
@@ -572,6 +603,10 @@ class TypingPractice {
     this.textArea.currentLine.incErrorCount()
     this.scoreBoard.update()
     this.flashBackround("red")
+    this.errorDialog.show()
+    console.log(this.errorDialog)
+    if( this.errorDialogTimeout ) clearTimeout(this.errorDialogTimeout)
+    this.errorDialogTimeout = setTimeout(_ => this.errorDialog.close(),this.errorDialogTime)
   }
   processSource(source) {
     const trimmed = source.trim()

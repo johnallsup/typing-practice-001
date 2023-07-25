@@ -176,3 +176,38 @@ span.scoreboard_element.line_number {
 span.scoreboard_element.time_elapsed {
   flex: 1;
 }
+
+dialog.error-dialog[open] {
+  display: flex;
+}
+dialog.error-dialog {
+  position: fixed;
+  top: 5vh;
+  left: 60vw;
+  flex-direction: row;
+}
+dialog.error-dialog > div {
+  display: flex;
+  flex-direction: column;
+}
+dialog.error-dialog div.expected-key,
+dialog.error-dialog div.actual-key {
+  font-size: 4em;
+  text-align: center;
+  width: 6rem;
+  height: 6rem;
+  text-align: center;
+}
+
+dialog.error-dialog div.expected-key {
+  color: white;
+  background-color: #550;
+}
+dialog.error-dialog div.actual-key {
+  color: white;
+  background-color: #700;
+}  
+dialog.error-dialog div.label {
+  font-size: 2rem;
+  text-align: center;
+}
