@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+/*
+Exp5, a typing practise program.
+This is e.html, which presents a form to paste source text into.
+This is copyright 2021 John Allsup (john.x43@allsup.co).
+You may redistribute this under the terms of the GNU GPL verison 3.
+*/
+-->
+<html>
+<head>
+<meta charset='utf-8'/>
+<title>Simple Typing Practice</title>
+<link rel='stylesheet' href='exp5idx.css' />
+<link rel="stylesheet" href="exp5.css"/>
+<script src='exp5.js'></script>
+<script>
+autostart = false
+let source
+const reset = (e) => {
+  e.preventDefault()
+  startTypingPracticeWith(source)
+}
+const go = (e) => {
+  source = a = document.getElementById("source").value
+  reset(e)
+}
+window.addEventListener("load",() => {
+  document.querySelector("form").addEventListener("submit",go)
+})
+window.addEventListener("keydown", (e) => {
+  if( e.key === "Escape" && e.shiftKey ) {
+    reset(e)
+  }
+})
+</script>
+<style>
+#source {
+  width: 95vw;
+  height: 80vh;
+}
+#input_page {
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+p, h1 {
+  color: black;
+}
+</style>
+</head>
+<body>
+<div id="input_page">
+<h1>Simple Typing Practice</h1>
+<p>Paste your text below. The Wrap button wraps at 72 chars, the Process button wraps, replaces characters like 
+&#x201c;&#x201d; (curly quotes) with " (straight quotes).</p>
+<form>
+  <textarea autofocus id="source" cols="80" rows="10"></textarea><br/>
+  <input type="submit" value="Begin"/>
+  <button id="wrap_button">Wrap</button>
+  <button id="process_button">Process</button>
+</form>
+</div>
+</body>
+<script>
+// regex from Thomas Brierly's answer at https://stackoverflow.com/questions/14484787/wrap-text-in-javascript
+const wrap = (src,n=72) => {
+  const regex = new RegExp(`(?![^\\n]{1,${n}}$)([^\\n]{1,${n}})\\s`,'g')
+  console.log(src)
+  return src.replace(regex, '$1\n')
+}
+document.getElementById("wrap_button").addEventListener("click",(e) => {
+  e.preventDefault()
+  const textarea = document.getElementById("source")
+  const v = textarea.value
+  const w = wrap(v)
+  textarea.value = w
+})
+document.getElementById("process_button").addEventListener("click",(e) => {
+  e.preventDefault()
+  const textarea = document.getElementById("source")
+  const v = textarea.value
+    .replace(/\[.*?\]/g,"")
+    .replace(/[\u201c\u201d]/g,'"') // curly double quotes
+    .replace(/[\u2018\u2019]/g,"'") // curly single quotes
+    .replace(/\u2014/g,"---") // m dash
+    .replace(/\u2013/g,"-") // n dash
+    .replace(/\xa0/g," ") // nonbreaking space
+  const w = wrap(v)
+  textarea.value = w
+})
+</script>
+</html>
+
+
