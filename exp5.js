@@ -53,8 +53,8 @@ const startTypingPractice = () => {
   setTimeout(() => {
     document.body.innerHTML = ""
     const container = document.body
-    const typingPractice = new TypingPractice(container, source, getAttribution())
-    typingPractice.init()
+    window.typingPractice = new TypingPractice(container, source, getAttribution())
+    window.typingPractice.init()
   },0)
 }
 
@@ -323,6 +323,7 @@ class TextArea {
     setTimeout(_ => {
       let computedStyle = window.getComputedStyle(window.textarea)
       window.textareaBaseFontSize = computedStyle.getPropertyValue("font-size")
+      window.updateTextAreaFontSize()
     },0)
 
     const source_lines = source.split("\n")
@@ -572,7 +573,7 @@ class TypingPractice {
     document.body.append(this.errorDialog)
     window.errd = this.errorDialog
   }
-  errorDialogTime = 500
+  errorDialogTime = 5000
   flashTimeout = 100
   keyPressesTotal = 0
   keyPressesCorrect = 0
@@ -630,6 +631,9 @@ class TypingPractice {
     window.addEventListener("focus",this.handleFocus)
     window.focus()
     this.start()
+    if( window.baseFontSize ) {
+      window.textareaSizeFactor = window.baseFontSize
+    }
   }
   handleBlur(e) {
     const dom = document.querySelector(".typing_app")

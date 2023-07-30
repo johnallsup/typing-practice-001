@@ -35,6 +35,13 @@ const attrib=null
 </script>\n";
 }
 ?>
+<?php
+if( isset($base_font_size) ) {
+  ?><script>
+    window.baseFontSize = 1.5
+    </script><?php
+}
+?>
 </head>
 <body>
 <?php
