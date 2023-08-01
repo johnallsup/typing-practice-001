@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 /*
-Exp4, a typing practise program.
+Exp5, a typing practise program.
 This is index.php, the front door PHP script.
 This is copyright 2015 John Allsup (john.435@allsup.co).
 You may redistribute this under the terms of the GNU GPL verison 3.
