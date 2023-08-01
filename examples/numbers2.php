@@ -1,7 +1,9 @@
 <?php
 /*
-Exp5, a typing practice program.
-This is copyright 2021 John Allsup (john.435@allsup.co).
+Exp5, a typing practise program.
+This is e.html, which presents a form to paste source text into.
+
+This is copyright 2015-2023 John Allsup (john.x43@allsup.co).
 You may redistribute this under the terms of the GNU GPL verison 3.
 */
 function choice($xs) {

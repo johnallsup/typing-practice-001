@@ -2,7 +2,8 @@
 /*
 Exp5, a typing practise program.
 This is e.php, the HTML template.
-This is copyright 2015 John Allsup (john.x43@allsup.co).
+
+This is copyright 2015-2023 John Allsup (john.x43@allsup.co).
 You may redistribute this under the terms of the GNU GPL verison 3.
 */
 if( ! isset($source) ) {

@@ -1,11 +1,10 @@
-//
-// exp5 -- a simple minimalist typing practice program
-//
-// copyright John Allsup 2021
-//
-// You may use and redistribute this under the terms of the GNU GPL version 3.
-//
-//
+/*
+Exp5, a typing practise program.
+This is e.html, which presents a form to paste source text into.
+
+This is copyright 2015-2023 John Allsup (john.x43@allsup.co).
+You may redistribute this under the terms of the GNU GPL verison 3.
+*/
 let autostart = true
 window.q = (x,y=document) => y.querySelector(x)
 window.qq = (x,y=document) => Array.from(y.querySelectorAll(x))

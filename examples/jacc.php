@@ -1,13 +1,16 @@
 <?php
+/*
+Exp5, a typing practise program.
+This is e.html, which presents a form to paste source text into.
+
+This is copyright 2015-2023 John Allsup (john.x43@allsup.co).
+You may redistribute this under the terms of the GNU GPL verison 3.
+*/
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-/*
-Exp5, a typing practise program.
-This is index.php, the front door PHP script.
-This is copyright 2015 John Allsup (john.435@allsup.co).
-You may redistribute this under the terms of the GNU GPL verison 3.
-*/
+
+/* This is intended for practising accents (with WinCompose in my case) */
 $accs = ['â', 'ù', 'Ü', 'ñ', 'ê', 'ö', 'ô', 'ì', 'ü', 'ß', 'è', 'í', 'ë', 'Ä', 'é', 'ç', 'Ö', 'ï', 'ó', 'î', 'û', 'á', 'ò', 'ú', 'ä', 'à'];
 function make_word($accs,$len = 6) {
   $t = "";

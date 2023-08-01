@@ -1,4 +1,6 @@
 # Typing Practice Program
+*Copyright 2015-2023 John Allsup (john.x43@allsup.co). You may redistribute this under the terms of the GNU GPL verison 3.*
+
 This is a simple typing practice program. The code is named `exp5` where
 `exp` is short for 'expect', as it sits in a loop expecting keystrokes
 and complaining when it doesn't get them; and 5 since this is the fifth

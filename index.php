@@ -1,10 +1,12 @@
 <?php
 /*
 Exp5, a typing practise program.
-This is index.php, the front door PHP script.
-This is copyright 2015 John Allsup (john.435@allsup.co).
-You may redistribute this under the terms of the GNU GPL verison 3.
+This is e.html, which presents a form to paste source text into.
 
+This is copyright 2015-2023 John Allsup (john.x43@allsup.co).
+You may redistribute this under the terms of the GNU GPL verison 3.
+*/
+/*
 Put source files in e.g. sources/mystuff/astory.txt.
 Alternatively modify the $found_files = ... line to your taste.
 */
